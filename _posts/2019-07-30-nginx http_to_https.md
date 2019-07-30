@@ -7,6 +7,7 @@ categories: Nginx
 ---
 
 ###Nginx HTTP 요청을 HTTPS로 Redirect하기 
+
 **Nginx에서 아주 간단하게 적용이 가능하다**
 
 nginx/nginx.conf 또는 nginx/conf.d/*.conf에서 설정
