@@ -6,7 +6,7 @@ author: Glenn
 categories: Nginx
 ---
 
-###Nginx HTTP 요청을 HTTPS로 Redirect하기 
+## Nginx HTTP 요청을 HTTPS로 Redirect하기 
 
 **Nginx에서 아주 간단하게 적용이 가능하다**
 
