@@ -8,9 +8,9 @@ cover:  "/assets/instacode.png"
 ---
 
 #### 프로그래밍을 하다보면 자주 보게되는 예외중 하나가 NPE(NullPointerException) 입니다.
-Java8에서 `Optional`이 등장하기전에는 NPE를 방지하기위해 보통 *if*문을 사용하여 처리하였습니다.
+Java8에서 `Optional`이 등장하기전에는 NPE를 방지하기위해 보통 `if`문을 사용하여 처리하였습니다.
 
-*if문을 이용하여 null처리* 
+*`if`문을 이용하여 null처리* 
 ```java
 String text = null;
 
@@ -127,4 +127,4 @@ stringSupplier.get();
 
 #### 추가로 `orElse` or `orElseGet`에서는 null을 return하지 않아야합니다.
 
-`Optional`을 사용하는 이유가 NPE예방인데 null을 return하게되면 해당 값을 사용하는 다른곳에서 NPE가 발생할수있을겁니다.
+`Optional`을 사용하는 이유가 NPE예방인데 null을 return하게되면 해당 값을 사용하는 다른곳에서 NPE가 발생할수도 있기 때문입니다.
