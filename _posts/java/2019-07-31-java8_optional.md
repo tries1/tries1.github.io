@@ -116,11 +116,11 @@ stringSupplier.get();
 
 한가지씩 예를들어 보겠습니다.
 * 검색결과가 없을때 "결과없음"이라는 고정된값(상수) String값을 return할때
-  - orElse 사용
+  - **orElse** 사용
   - orElse에는 **상수를 반환하는것**이 좋습니다.(사용하지 않더라고 호출되기때문이죠)
   
 * Cache에서 값을 찾지 못했을때 DB에서 값을 호출하고 싶을때
-  - orElseGet 사용
+  - **orElseGet** 사용
   - cache에서 **값이 없을때** orElseGet이 호출이되면서 DB를 호출
 
 ---
