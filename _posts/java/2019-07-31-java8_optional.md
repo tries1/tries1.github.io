@@ -22,6 +22,7 @@ if (text != null) {
 
 ```
 
+---
 
 #### 이제 Optional을 이용하여 처리하는 방법을 확인해보겠습니다.
 
@@ -36,6 +37,8 @@ Optional.ofNullable(text);
 //비어있는 Optional 생성
 Optional.empty();
 ```
+
+---
 
 *if문을 통해 처리하던 부분을 Optional로 변경*
 ```java
@@ -53,6 +56,8 @@ optionalText.orElse("text is null!"); //text is null! 출력
 optionalText.orElseGet(() -> "text is null!"); //text is null! 출력
 
 ```
+
+---
 
 #### Optional을 조금더 활용해보기
 Java8에 함께 추가된 Functional interface을 같이 사용해보겠습니다.
@@ -118,6 +123,7 @@ stringSupplier.get();
   - orElseGet 사용
   - cache에서 **값이 없을때** orElseGet이 호출이되면서 DB를 호출
 
+---
 
 #### 추가로 orElse or orElseGet에서는 null을 return하지 않아야합니다.
 
