@@ -88,7 +88,7 @@ Optional.ofNullable(text)
  - Function : `Function<T, R>` 인자 T를 받아서 R type을 return 
  
 `filter` : Functional interface중 Predicate 사용
- - Predicate : `Predicate<T>`  인자 T를 받아서 조건에따라 boolean type을 return
+ - Predicate : `Predicate<T>`  인자 T를 받아서 boolean type을 return
 
 ---
 
