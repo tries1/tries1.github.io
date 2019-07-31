@@ -1,16 +1,15 @@
 ---
 layout: post
-title:  "Nginx http to https"
+title:  "Nginx HTTP 요청을 HTTPS로 Redirect하기"
 date:   2019-07-30 17:00:00
 author: Glenn
 categories: Nginx
+cover:  "/assets/instacode.png"
 ---
 
-## Nginx HTTP 요청을 HTTPS로 Redirect하기 
+*Nginx에서 간단하게 적용이 가능합니다.*
 
-**Nginx에서 간단하게 적용이 가능합니다.**
-
-nginx/nginx.conf or nginx/conf.d/*.conf에서 설정
+**nginx/nginx.conf** or **nginx/conf.d/*.conf**에서 설정
 ```nginx
 server {
     listen 80;
