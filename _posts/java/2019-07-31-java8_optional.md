@@ -84,10 +84,10 @@ Optional.ofNullable(text)
         .map(String::trim)
         .orElse("text is null!");
 ```
-`map` : Functional interface중 Function 사용
+`map` : Functional interface중 `Function` 사용
  - Function : `Function<T, R>` 인자 T를 받아서 R type을 return 
  
-`filter` : Functional interface중 Predicate 사용
+`filter` : Functional interface중 `Predicate` 사용
  - Predicate : `Predicate<T>`  인자 T를 받아서 boolean type을 return
 
 ---
@@ -106,9 +106,9 @@ optionalText.orElseGet(() -> "text is null!"); //text is null! 출력
 
 `orElse` : 미리 계산된 값?을 가져옵니다.
 
-`orElseGet` : Functional interface중 하나인 Supplier 통해서 값을 가져옵니다.
+`orElseGet` : Functional interface중 하나인 `Supplier` 통해서 값을 가져옵니다.
 
-**Supplier는 get메소드가 호출되어질때 값을 가져오게됩니다.**
+**Supplier는 get메소드가 호출되어질때 값을 계산하고 결과를 가져옵니다.(lazy evaluation)**
 ```java
 Supplier<String> stringSupplier = () -> "hello";
 stringSupplier.get();
