@@ -4,5 +4,5 @@ title: About
 permalink: /about/
 ---
 
-Spring을 이용하여 웹개발시 필요한 내용, tip들을 정리해놓은 장소입니다.
+웹 프로그래밍을 하면서 필요했던 지식 및 Tip을 정리한 Blog입니다.
 
