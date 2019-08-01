@@ -67,7 +67,7 @@ String text = null;
 //map은 Functional interface중 하나인 Function 사용합니다.
 Optional.ofNullable(text)
         .map(s -> "text is " + s)//string 앞에 "text is " 추가
-        .orElse("text is null!");
+        .orElse("text is null!");//text가 null일경우 orElse가 호출됩니다.
 
 ```
 
@@ -93,6 +93,8 @@ Optional.ofNullable(text)
 ---
 
 #### orElse와 orElseGet의 차이
+
+*Optional 연산중 null값을 만나게되면 orElse 또는 orElseGet을 호출하게됩니다.*
 
 ```java
 String text = null;
