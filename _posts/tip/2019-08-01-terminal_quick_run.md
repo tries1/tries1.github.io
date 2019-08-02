@@ -98,4 +98,4 @@ osascript /dev/script/terminal_quick.scpt
 
 아래처럼 터미널이 분할되서 수행되면 정상입니다.
 
-![성공](/assets/tip/terminal_quick_run_img1.png)
+![분할된 화면 예시 이미지](/assets/tip/terminal_quick_run_img1.png)
