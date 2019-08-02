@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Java8 Optional을 활용하여 Null pointer exception 예방하기"
+title:  "Java8 Optional을 활용하여 Null pointer exception 예방하기 (if문 대체하기)"
 date:   2019-07-31 11:00:00
 author: Glenn
 categories: Java

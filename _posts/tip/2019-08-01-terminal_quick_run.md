@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Mac에서 Terminal 빠르게 실행하기(with iTerm2, appleScript)"
+title:  "Mac에서 Terminal 단축어(shortcut) 설정하기(with iTerm2, appleScript)"
 date:   2019-08-01 17:00:00
 author: Glenn
 categories: Tip
