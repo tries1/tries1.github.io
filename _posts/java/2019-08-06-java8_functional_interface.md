@@ -119,12 +119,15 @@ stringLength.apply("glenn");
 ```java
 BiFunction<Integer, Integer, Integer> sumAndplusOneFunction = (x, y) -> x + y + 1;
 sumAndplusOneFunction.apply(2, 2);
+```
 
 `BiPredicate<T, U>`
  - `Predicate<T>`에서 전달하는 인자가 하나 추가된 `FunctionalInterface`입니다.
  - `T 타입`, `U 타입`의 인자를 받아서 `boolean`의 결과를 리턴합니다.
+```java
+BiPredicate<Boolean, Boolean> isAllTrue = (x, y) -> x && y;
+isAllTrue.test(true, false);
 ```
-
 ---
 
 이 외에도 많은 `FunctionalInterface`가 있지만, 직접 `java.util.function`에서 확인해보시면
