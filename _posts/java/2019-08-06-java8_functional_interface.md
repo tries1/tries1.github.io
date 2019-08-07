@@ -71,30 +71,38 @@ Java8에 추가된 `FunctionalInterface`는 약 40여개이지만
 
 `Function<T, R>`
  - `T 타입`의 인자를 받아서 `R 타입`의 값을 리턴합니다.
- - `Function<Integer, Integer> plusOneFunction = (x) -> x + 1;`
- - `plusOneFunction.apply(1)`
- - `Function<String, Integer> stringLength = (x) -> x.length();`
- - `stringLength.apply("glenn")`
  - `Stream API`의 `map`에서 사용
+ ```java
+Function<Integer, Integer> plusOneFunction = (x) -> x + 1;
+plusOneFunction.apply(1);
+Function<String, Integer> stringLength = (x) -> x.length();
+stringLength.apply("glenn");
+```
  
 `Supplier<T>`
  - 인자를 받지않고 `T 타입`의 값을 리턴합니다.
- - `Optional`의 `orElseGet`에서 사용
- - `Supplier<String> printNameSupplier = () -> "glenn";`
- - `printNameSupplier.get();`
  - get()이 호출되기 전까지 수행되지 않습니다.
+ - `Optional`의 `orElseGet`에서 사용
+ ```java
+ Supplier<String> printNameSupplier = () -> "glenn";
+ printNameSupplier.get();
+ ```
  
 `Predicate<T>`
  - `T 타입` 인자를 받아서 `boolean` 타입의 결과를 리턴합니다.
- - `Predicate<String> isNotEmpty = (x) -> !x.isEmpty();`
- - `isNotEmpty.test("glenn");`
- - `Stream API`의 `Predicate`에서 사용
+ - `Stream API`의 `filter`에서 사용
+ ```java
+ Predicate<String> isNotEmpty = (x) -> !x.isEmpty();
+ isNotEmpty.test("glenn");
+ ```
  
 `Consumer<T>`
  - `T 타입` 인자를 받아서 결과를 리턴하지않습니다.(void)(이름 그대로 소비합니다.)
- - `Consumer<String> namePrint = (name) -> System.out.println(name);`
- - `namePrint.accept("glenn");`
  - `Stream API`의 `forEach`에서 사용
+ ```java
+ Consumer<String> namePrint = (name) -> System.out.println(name);
+ namePrint.accept("glenn");
+ ```
 
 ---
 
@@ -111,4 +119,14 @@ Java8에 추가된 `FunctionalInterface`는 약 40여개이지만
 ```java
 BiFunction<Integer, Integer, Integer> sumAndplusOneFunction = (x, y) -> x + y + 1;
 sumAndplusOneFunction.apply(2, 2);
+
+`BiPredicate<T, U>`
+ - `Predicate<T>`에서 전달하는 인자가 하나 추가된 `FunctionalInterface`입니다.
+ - `T 타입`, `U 타입`의 인자를 받아서 `boolean`의 결과를 리턴합니다.
 ```
+
+---
+
+이 외에도 많은 `FunctionalInterface`가 있지만, 직접 `java.util.function`에서 확인해보시면
+
+큰 어려움없이 이해하실듯합니다.
