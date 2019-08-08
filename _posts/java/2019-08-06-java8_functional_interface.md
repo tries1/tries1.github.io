@@ -30,10 +30,10 @@ Java는 컴파일시 `Type Erasure`를 사용하여 타입정보를 알수없게
 Java8에서 Lamda를 지원하기위해 `FunctionalInterface` 추가하였습니다.
 
 `타입 추론` : 정해지지 않은 대상의 타입을 컴파일러가 유추하는 기능
- - ex) var name = "glenn" // String, Scala의 타입추론
+ - ex) `var name = "glenn"` // String, Scala의 타입추론
  
 `Type Erasure` : 자바의 컴파일러가 컴파일 시점에 타입의 정보를 제거함
- - ex) List<User> users; -> List users; // 타입 정보를 제거
+ - ex) `List<User> users; -> List users;` // 타입 정보를 제거
 
   
 *Java가 `Type Erasure`를 사용하게된 이유는 Java5에 추가된*  
