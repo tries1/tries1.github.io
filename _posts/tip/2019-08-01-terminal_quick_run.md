@@ -5,6 +5,7 @@ date:   2019-08-01 17:00:00
 author: Glenn
 categories: Tip
 cover:  "/assets/instacode.png"
+comments: true
 ---
 
 #### `iTerm`, `appleScript`를 이용하여 화면분할된 Terminal 간편하게 실행하기 

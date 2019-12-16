@@ -5,6 +5,7 @@ date:   2019-07-30 17:00:00
 author: Glenn
 categories: Nginx
 cover:  "/assets/instacode.png"
+comments: true
 ---
 
 *Nginx에서 간단하게 적용이 가능합니다.*

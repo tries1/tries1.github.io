@@ -5,6 +5,7 @@ date:   2019-08-23 15:00:00
 author: Glenn
 categories: Java
 cover:  "/assets/instacode.png"
+comments: true
 ---
 
 #### Java 알파벳순서대로 정렬하기입니다.

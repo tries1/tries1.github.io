@@ -5,6 +5,7 @@ date:   2019-08-06 11:00:00
 author: Glenn
 categories: Java
 cover:  "/assets/instacode.png"
+comments: true
 ---
 
 #### Java8에 Lamda가 추가되면서 다음과 같은 프로그래밍이 가능해졌습니다.

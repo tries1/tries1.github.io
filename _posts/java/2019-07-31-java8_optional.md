@@ -5,6 +5,7 @@ date:   2019-07-31 11:00:00
 author: Glenn
 categories: Java
 cover:  "/assets/instacode.png"
+comments: true
 ---
 
 #### 프로그래밍을 하다보면 자주 보게되는 예외중 하나가 NPE(NullPointerException) 입니다.
