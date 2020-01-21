@@ -11,9 +11,9 @@ comments: true
 ## Spring Webflux는 무엇인가?
 Spring Web에서 비동기 & 논블록킹 Reactive programming을 활용한 웹개발 
 
-### 기존 Spring MVC의 문제
+### Reactive Stack VS Servlet Stack
 
-![Servlet stack, Reative Stack 비교 이미지](https://github.com/tries1/glenn-blog/blob/master/assets/spring/servlet_vs_reactive.png?raw=true)
+![Servlet Stack, Reative Stack 비교 이미지](https://github.com/tries1/glenn-blog/blob/master/assets/spring/servlet_vs_reactive.png?raw=true)
 
 1. Springboot Webflux (Reative Stack)를 보면 기본 내장 컨테이너가 Tomcat -> Netty를 사용합니다.
 2. Reactive programming을 지원하기위해 Reactor 포함
@@ -25,7 +25,7 @@ Spring Web에서 비동기 & 논블록킹 Reactive programming을 활용한 웹�
 ---
 
 
-### Servlet stack VS Reative Stack
+### 기존 Reactive Stack(Spring MVC)의 문제
 
 ![Thread Pool Hell 비교 이미지](https://github.com/tries1/glenn-blog/blob/master/assets/spring/thread_pool_hell.png?raw=true)
 
@@ -43,7 +43,9 @@ Thread Pool을 사용해 Thread를 재사용하는 방식이였습니다.
 
 ### Spring Webflux의 해결방법은?
 비동기 논블록킹, 콜백헬의 문제를 해결할수있도록 Reactive programming 방식의 개발을 지원  
-Reactive streams interface를 구현한 [Reactor](https://projectreactor.io/)를 사용하여 문제를 해결  
+Reactive streams interface를 구현한 [Reactor](https://projectreactor.io/)를 사용하여 문제를 해결 
+
+RestTemplate -> WebClient를 이용하여 Rest API 비동기 Call지원 
 
 Sprongboot2.X의 경우 webflux를 이용하였을때 내장 컨테이너가 Netty를 사용함(비동기 방식에 Tomcat보다 적합)
 
