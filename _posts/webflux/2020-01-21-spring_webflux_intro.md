@@ -8,7 +8,7 @@ cover:  "/assets/instacode.png"
 comments: true
 ---
 
-## Spring Webflux는 무엇인가?
+## Spring Webflux
 Spring Web에서 비동기 & 논블록킹 Reactive programming을 활용한 웹개발 
 
 ### Reactive Stack VS Servlet Stack
