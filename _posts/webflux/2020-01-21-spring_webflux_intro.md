@@ -25,7 +25,7 @@ Spring Web에서 비동기 & 논블록킹 Reactive programming을 활용한 웹�
 ---
 
 
-### 기존 Reactive Stack(Spring MVC)의 문제
+### Servlet Stack(Spring MVC)의 문제
 
 ![Thread Pool Hell 비교 이미지](https://github.com/tries1/glenn-blog/blob/master/assets/spring/thread_pool_hell.png?raw=true)
 
@@ -51,3 +51,6 @@ Sprongboot2.X의 경우 webflux를 이용하였을때 내장 컨테이너가 Net
 
 Netty의 경우 Default Worker Thread의 갯수는 CPU Core * 2 입니다.  
 (*로직중 블록킹되는 부분이 있으면 안되는 이유*)
+
+현재 많은 서비스들이 [MSA](https://ko.wikipedia.org/wiki/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4)를 적용하면서  
+API 호출이 많아짐에따라 효율적이고 좋은성능을 낼수있는 Webflux를 적극적으로 도입하고있는 추세입니다.  
