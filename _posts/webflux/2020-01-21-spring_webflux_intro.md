@@ -20,7 +20,7 @@ Spring Web에서 비동기 & 논블록킹 Reactive programming을 활용한 웹�
 3. RestTemplate -> WebClient로 변경하여 비동기 Call이 가능(Servlet stack에서 해당 기능만 쓰기도함)
 4. Reactive Repositories를 지원
  - Reactive 방식을 지원하는 Mongo, Redis, Cassandra등을 사용하여 Repository에 논블록킹 연결이 가능
- - JDBC같이 논블록킹 방식을 지원하지않기때문에 [R2DBC](https://spring.io/projects/spring-data-r2dbc)를 사용해야함
+ - 기존 JDBC 논블록킹 방식을 지원하지않기때문에 [R2DBC](https://spring.io/projects/spring-data-r2dbc)를 사용해야함
 
 ---
 
