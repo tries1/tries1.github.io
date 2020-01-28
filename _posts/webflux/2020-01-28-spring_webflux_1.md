@@ -64,16 +64,32 @@ Flux.create(fluxSink -> {
 ---
 
 #### Just (Hot Publisher)
-just(T)는 가장 일반적이며 해당값을 즉시 방출합니다.
+just(T)는 가장 일반적이며 해당값을 즉시 방출합니다.  
+Hot Publisher이며 처음 방출된 값을 cache해놓고 다음 구독자에게 cache된 값을 방출합니다.  
 
 *Hot Publisher이며 subscribe(구독) 하지않아도 데이터를 방출합니다.*  
 
-Mono
+Mono(T)
 ```java
 Mono.just("new data");
+
+Mono<Double> monoJust = Mono.just(Math.random());
+Mono<Double> monoDefer = Mono.defer(() -> Mono.just(Math.random()));
+
+// just는 처음에 방출한 랜덤값을 내부적으로 cache한후 재사용 
+System.out.println("Just >>>>>>>>>>..");
+monoJust.subscribe(System.out::println);
+monoJust.subscribe(System.out::println);
+monoJust.subscribe(System.out::println);
+
+// defer는 매번 새로운 랜덤값을 방출 
+System.out.println("Defer >>>>>>>>>>..");
+monoDefer.subscribe(System.out::println);
+monoDefer.subscribe(System.out::println);
+monoDefer.subscribe(System.out::println);
 ```
 
-Flux
+Flux(T... data)  
 ```java
 Flux.just("new data1", "new data2", "new data3", "new data4");
 ```
@@ -126,4 +142,4 @@ public Integer someError() throws Exception {
 
 ---
 
-**기본적인 Mono의 생성자를 소개해드렸으며, 이외에도 많은 생성자가 있습니다.**  
+**기본적인 Mono와 Flux의 생성자를 소개해드렸으며, 이외에도 많은 생성자가 있습니다.**  
