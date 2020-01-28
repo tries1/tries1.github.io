@@ -33,7 +33,7 @@ Spring과 함께 **Pivotal**에서 관리되고있으며, [Reactive streams inte
 create(Consumer<MonoSink<T>> callback) lower level의 메소드로  
 직접적으로 데이터의 방출및 에러신호 내보낼수있습니다.
 
-*Cold Publisher*이며 subscribe(구독) 하지않으면 데이터를 방출하지 않습니다.  
+*Cold Publisher이며 subscribe(구독) 하지않으면 데이터를 방출하지 않습니다.*  
 *[Hot, Cold Publisher는 추후에 정리하도록 하겠습니다.](https://projectreactor.io/docs/core/release/reference/#reactor.hotCold)*
 
 Mono
@@ -66,7 +66,7 @@ Flux.create(fluxSink -> {
 #### Just (Hot Publisher)
 just(T)는 가장 일반적이며 해당값을 즉시 방출합니다.
 
-Hot Publisher이며 subscribe(구독) 하지않아도 데이터를 방출합니다.  
+*Hot Publisher이며 subscribe(구독) 하지않아도 데이터를 방출합니다.*  
 
 Mono
 ```java
@@ -84,7 +84,7 @@ Flux.just("new data1", "new data2", "new data3", "new data4");
 defer라는 단어에서 알수있듯이 데이터의 방출을 구독전까지 *지연*시킵니다.  
 뿐만 아니라 checked exception method를 호출하여 처리할수있습니다.  
 
-*Cold Publisher*이며 subscribe(구독) 하지않으면 데이터를 방출하지 않습니다.
+*Cold Publisher이며 subscribe(구독) 하지않으면 데이터를 방출하지 않습니다.*
   
 ```java
 // just는 exception처리를 할수없음
@@ -113,7 +113,7 @@ public Integer someError() throws Exception {
 fromCallable(Callable<? extends T> supplier)는 defer와 유사하지만  
 exception을 자동으로 Mono.error로 래핑합니다.
   
-*Cold Publisher*이며 subscribe(구독) 하지않으면 데이터를 방출하지 않습니다.  
+*Cold Publisher이며 subscribe(구독) 하지않으면 데이터를 방출하지 않습니다.*  
 
 ```java
 //checked exception method를 호출할수있다.
