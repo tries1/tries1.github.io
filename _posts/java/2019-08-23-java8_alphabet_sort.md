@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Java 알파벳순서대로 정렬하기"
+title:  "Java8 알파벳순서대로 정렬하기"
 date:   2019-08-23 15:00:00
 author: Glenn
 categories: Java
@@ -8,7 +8,7 @@ cover:  "/assets/instacode.png"
 comments: true
 ---
 
-#### Java 알파벳순서대로 정렬하기입니다.
+#### Java8의 Stream API를 사용한 알파벳순서대로 정렬하기입니다.
 
 *`sorted()`* 
 
