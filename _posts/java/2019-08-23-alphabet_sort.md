@@ -62,3 +62,15 @@ Arrays.stream(alpha.split(""))
 
 *소문자를 먼저 출력하고 싶다면 `o1.compareTo(o2)` -> `o2.compareTo(o1)`로 변경하면 됩니다.*
 
+---
+
+추가로 정렬된 알파벳을 다시 `String`으로 얻을려면 다음과같이   
+`collect()`를 사용하여 합쳐주면됩니다. 
+```java
+Arrays.stream(alpha.split(""))
+.sorted((o1, o2) -> {
+    int res = o1.compareToIgnoreCase(o2);
+    return (res == 0) ? o1.compareTo(o2) : res;
+})
+.collect(Collectors.joining());
+```
