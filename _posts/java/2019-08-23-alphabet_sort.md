@@ -67,7 +67,7 @@ Arrays.stream(alpha.split(""))
 추가로 정렬된 알파벳을 다시 `String`으로 얻을려면 다음과같이   
 `collect()`를 사용하여 합쳐주면됩니다. 
 ```java
-Arrays.stream(alpha.split(""))
+String alphaSorted = Arrays.stream(alpha.split(""))
 .sorted((o1, o2) -> {
     int res = o1.compareToIgnoreCase(o2);
     return (res == 0) ? o1.compareTo(o2) : res;
