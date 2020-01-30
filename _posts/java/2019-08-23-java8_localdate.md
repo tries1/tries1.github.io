@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Java8 LocalDate 날짜 계산, 비교, 구하기"
+title:  "Java8 LocalDate 날짜 계산, 비교, 구하기, format 변경하기"
 date:   2020-01-30 11:00:00
 author: Glenn
 categories: Java
@@ -32,6 +32,17 @@ LocalDate.of(2020, 01, 30);
 LocalDateTime.of(2020, 01, 30, 10, 00, 00);
 
 // 날짜포맷 변경
+LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+```
+
+---
+
+#### 날짜포맷 변경하기
+`format()`, `DateTimeFormatter`를 사용하여 원하는 포맷으로 날짜를 생성할수있습니다.
+
+```java
 LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
