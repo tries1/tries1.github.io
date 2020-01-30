@@ -31,7 +31,7 @@ Spring과 함께 **Pivotal**에서 관리되고있으며, [Reactive streams inte
 #### create (Cold Publisher)
 
 create(Consumer<MonoSink<T>> callback) lower level의 메소드로  
-직접적으로 데이터의 방출및 에러신호 내보낼수있습니다.
+직접적으로 데이터의 방출 및 에러신호 내보낼수있습니다.
 
 *Cold Publisher이며 subscribe(구독) 하지않으면 데이터를 방출하지 않습니다.*  
 *[Hot, Cold Publisher는 추후에 정리하도록 하겠습니다.](https://projectreactor.io/docs/core/release/reference/#reactor.hotCold)*
@@ -44,7 +44,7 @@ Mono.create(monoSink -> {
   } catch (RuntimeException e) {
       monoSink.error(e);
   }
-}).subscribe(i -> System.out.println("Mono : " + i));
+}).subscribe();
 
 ```
 
@@ -58,7 +58,7 @@ Flux.create(fluxSink -> {
   } catch (RuntimeException e) {
       fluxSink.error(e);
   }
-}).subscribe(i -> System.out.println("Flux : " + i));
+}).subscribe();
 ```
 
 ---
@@ -71,18 +71,18 @@ Hot Publisher이며 처음 방출된 값을 cache해놓고 다음 구독자에�
 
 Mono(T)
 ```java
-Mono.just("new data");
-
 Mono<Double> monoJust = Mono.just(Math.random());
 Mono<Double> monoDefer = Mono.defer(() -> Mono.just(Math.random()));
 
-// just는 처음에 방출한 랜덤값을 내부적으로 cache한후 재사용 
+// just는 처음에 방출한 값을 내부적으로 cache한후 재사용 
+// random값을 호출했지만 모두 같은결과가 나옵니다.
 System.out.println("Just >>>>>>>>>>..");
 monoJust.subscribe(System.out::println);
 monoJust.subscribe(System.out::println);
 monoJust.subscribe(System.out::println);
 
-// defer는 매번 새로운 랜덤값을 방출 
+// defer는 매번 새로운 값을 방출 
+// defer를 사용하여 Hot Publisher를 Cold Publisher로 변경하는 방법이기도 합니다.
 System.out.println("Defer >>>>>>>>>>..");
 monoDefer.subscribe(System.out::println);
 monoDefer.subscribe(System.out::println);
@@ -90,8 +90,14 @@ monoDefer.subscribe(System.out::println);
 ```
 
 Flux(T... data)  
+
+Hot, Cold Publisher의 성격은 동일하며,  
+아래는 Flux의 just의 간단한 사용법입니다.
 ```java
-Flux.just("new data1", "new data2", "new data3", "new data4");
+// 1, 2, 3, 4, 5를 순서대로 방출
+Flux
+.just(1, 2, 3, 4, 5)
+.subscribe(System.out::println);
 ```
 
 ---
