@@ -8,7 +8,7 @@ cover:  "/assets/instacode.png"
 comments: true
 ---
 
-*해당 내용은 [Toby님의 Yutube의 자바와 스프링 비동기 기술](https://www.youtube.com/channel/UCcqH2RV1-9ebRBhmN_uaSNg) 내용을 보고 개인적으로 정리한 내용입니다.*
+#### 해당 내용은 [Toby님의 Yutube의 자바와 스프링 비동기 기술](https://www.youtube.com/channel/UCcqH2RV1-9ebRBhmN_uaSNg) 내용을 보고 개인적으로 정리한 내용입니다.
 
 ## Web Server Architecture 변화
 
