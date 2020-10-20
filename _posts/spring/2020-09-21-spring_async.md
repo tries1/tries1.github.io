@@ -26,7 +26,7 @@ comments: true
 
 ![Thread Pool Hell 비교 이미지](https://github.com/tries1/glenn-blog/blob/master/assets/spring/thread_pool_hell.png?raw=true)
 
-하지만 각 기능등리 물리적으로 분리되어 데이터를 가져하거나,  
+하지만 각 기능등리 물리적으로 분리되어 데이터를 가져오거나,  
 전달이 필요할때 네트워크를 통해서 가져오게 되면서 API 호출이 증가하게 되었고,  
 위의 이미지와 같이 많은 Thread 사용 및 Thread Block이 발생하며 서버성능이 떨어지게 되었습니다.
 
