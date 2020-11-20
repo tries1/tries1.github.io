@@ -149,3 +149,154 @@ public DeferredResult<String> sample2() {
     return cf;
 }
 ```
+
+## 검증 및 테스트
+
+우선 테스트 요청을 받아줄 웹서버를 8081포트로 띄우고 아래와 같이 API를 추가한다.
+```java
+@Slf4j
+@RequiredArgsConstructor
+@RestController
+public class TestController {
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+ 
+    // 응답이 느린 API
+    @GetMapping("some-api")
+    public String someBlockAPI() throws InterruptedException {
+        Thread.sleep(2000);
+        log.info("someBlockAPI call");
+        return String.format("some-block-api call, timestamp : %s", LocalDateTime.now().format(dtf));
+    }
+}
+```
+
+테스트 요청을 수행할 Load Test Class를 생성한다.
+```java
+import org.springframework.util.StopWatch;
+import org.springframework.web.client.RestTemplate;
+ 
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+ 
+import lombok.extern.slf4j.Slf4j;
+ 
+ 
+@Slf4j
+public class LoadTest {
+    public static void main(String[] args) throws Exception {
+        final Integer RUNNER = 100;
+        AtomicInteger ai = new AtomicInteger(1);
+        AtomicInteger successCount = new AtomicInteger(0);
+        RestTemplate rt = new RestTemplate();
+        ExecutorService es = Executors.newFixedThreadPool(RUNNER);
+        CyclicBarrier cb = new CyclicBarrier(RUNNER + 1);
+        for (int i = 1; i <= RUNNER; i++) {
+            es.execute(() -> {
+                try {
+                    int idx = ai.getAndIncrement();
+                    cb.await();
+ 
+                    StopWatch sw = new StopWatch();
+                    sw.start();
+                    rt.getForObject("http://localhost:8080/block-api", String.class);
+                    successCount.incrementAndGet();
+                    sw.stop();
+                    log.info("Elapsed: idx : {}, Sec : {}", idx, sw.getTotalTimeSeconds());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        cb.await();
+        StopWatch main = new StopWatch();
+        main.start();
+ 
+        es.shutdown();
+        es.awaitTermination(100, TimeUnit.SECONDS);
+ 
+        main.stop();
+        log.info("Running Sec : {}, Success Count : {}", main.getTotalTimeSeconds(), successCount);
+    }
+}
+``` 
+
+### Blocking API를 동시에 호출하였을때 Thread의 변화를 확인
+```java
+@RestController
+public class BlockingApiController {
+    RestTemplate rt = new RestTemplate();
+ 
+    @GetMapping("block-api")
+    public String block() {
+       return rt.getForObject("http://localhost:8081/some-api", String.class);
+    }
+}
+```
+
+Thread의 생성상태를 모니터링하기위한 Java Mission Control을 실행
+```bash
+> jmc
+```
+
+![JMC1](https://github.com/tries1/glenn-blog/blob/master/assets/spring/jmc-sample1.png?raw=true)
+
+![JMC2](https://github.com/tries1/glenn-blog/blob/master/assets/spring/jmc-sample2.png?raw=true)
+
+
+LoadTest를 수행하여 Thread 변화확인
+
+![LoadTest1](https://github.com/tries1/glenn-blog/blob/master/assets/spring/load-test-result-1.png?raw=true)
+
+Thread가 100개가 생성되어 모든 요청을 2초대로 처리하는것을 확인할수있다
+
+### Tomcat Thread를 1로 제한하여 호출
+
+Thread가 계속 생성되는건 문제가있으니 Thread를 제한을 걸고 다시 테스트 결과를 확인
+
+application.properties에서 아래의 내용을 추가
+```text
+# Default 200
+server.tomcat.threads.max=1
+```
+
+![LoadTest2](https://github.com/tries1/glenn-blog/blob/master/assets/spring/load-test-result-2.png?raw=true)
+
+Thread가 과도하게 생성되진않지만, 100개의 요청이 하나씩 처리되어 처리시간도 늘어난걸 확인할수 있다.
+
+### AsyncRestTemplate으로 변경
+
+Blocking API대신 AsyncRestTemplate을 사용한 API를 추가하고 결과를 확인
+
+```java
+Spring 4부터 ListenableFuture지원하며 Controller에서 ListenableFuture리턴하면 Spring이 알아서 처리해준다.
+AsyncRestTemplate art = new AsyncRestTemplate();
+ 
+@GetMapping("async-api")
+public ListenableFuture<ResponseEntity<String>> async() {
+    return art.getForEntity("http://localhost:8081/some-api", String.class);
+}
+```
+
+그러나 Thread가 순간적으로 생성되는것을 확인할수 있다.
+
+![LoadTest3](https://github.com/tries1/glenn-blog/blob/master/assets/spring/load-test-result-3.png?raw=true)
+
+### AsyncRestTemplate RequestFactory를 Netty로 변경
+
+AsyncRestTemplate와 Netty를 사용하여 Thread의 변화 확인  
+build.gradle에 netty라이브러리 추가
+
+```text
+implementation 'io.netty:netty-all:4.1.52.Final'
+```
+
+AsyncRestTemplate RequestFactory를 Netty로 변경
+```java
+AsyncRestTemplate art = new AsyncRestTemplate(new Netty4ClientHttpRequestFactory(new NioEventLoopGroup(1)));
+```
+
+LoadTest를 다시수행하여 결과를 확인하면 1개의 Thread로 100개의 요청을 동시에 처리하는것을 볼수있다.
+
