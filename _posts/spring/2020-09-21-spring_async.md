@@ -241,8 +241,6 @@ Thread의 생성상태를 모니터링하기위한 Java Mission Control을 실�
 > jmc
 ```
 
-![JMC1](https://github.com/tries1/glenn-blog/blob/master/assets/spring/jmc-sample1.png?raw=true)
-
 ![JMC2](https://github.com/tries1/glenn-blog/blob/master/assets/spring/jmc-sample2.png?raw=true)
 
 
