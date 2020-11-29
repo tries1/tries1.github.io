@@ -18,7 +18,7 @@ Reactor를 좀더 이애하기위해 Reactive Streams Interface 직접 구현해
 [reactive menifesto](https://www.reactivemanifesto.org/ko)
 
 리액티브 시스템이란?  
-[reactive-menifesto](https://github.com/tries1/glenn-blog/blob/master/assets/spring/reactive-menifesto.png?raw=true)
+![reactive-menifesto](https://github.com/tries1/glenn-blog/blob/master/assets/spring/reactive-menifesto.png?raw=true)
 
 응답이 잘 되고, 탄력적이며 유연하고 메시지 기반으로 동작하는 시스템 입니다. 우리는 이것을 리액티브 시스템(Reactive Systems)라고 부릅니다.  
 
@@ -33,16 +33,13 @@ Reactor를 좀더 이애하기위해 Reactive Streams Interface 직접 구현해
 
 ## Reactive Streams Interface 구현해보기
 - Reactive streams interface
-  - https://www.reactive-streams.org/
-  - https://www.reactive-streams.org/reactive-streams-1.0.3-javadoc/org/reactivestreams/package-summary.html
-  - https://github.com/reactive-streams/reactive-streams-jvm/blob/v1.0.3/README.md#specification
+  - [https://www.reactive-streams.org/](https://www.reactive-streams.org/)
+  - [https://www.reactive-streams.org/reactive-streams-1.0.3-javadoc/org/reactivestreams/package-summary.html](https://www.reactive-streams.org/reactive-streams-1.0.3-javadoc/org/reactivestreams/package-summary.html)
+  - [https://github.com/reactive-streams/reactive-streams-jvm/blob/v1.0.3/README.md#specification](https://github.com/reactive-streams/reactive-streams-jvm/blob/v1.0.3/README.md#specification)
 
 
-Webflux를 사용하게되면 Reactive Programming을 해야하는데  
-이때 Webflux에서는 Reactor을 사용합니다.
-
+Webflux에서는 Reactor을 사용하며  
 Reactor는 Reactive Streams Interface의 구현체중 하나입니다.
-(RxJava)
 
 Reactive Streams Interface 조금이나마 이해하기 위해  
 직접 구현해보도록 하겠습니다.
@@ -63,6 +60,7 @@ Publisher<Integer> pub = new Publisher<Integer>() {
 
 - `Subscriber<T>`
   - 데이터를 소모하는 역할
+  
 ```java
 import org.reactivestreams.Subscriber;
 
@@ -83,6 +81,7 @@ Subscriber<Integer> sub = new Subscriber<Integer>() {
 
 - `Subscription`
   - Publisher에게 필요한 데이터 수를 요청하고, cancel요청을 하며, BackPressure 동작에 중요한 역할
+  
 ```java
 import org.reactivestreams.Subscription;
 
