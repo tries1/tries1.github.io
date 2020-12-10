@@ -410,3 +410,5 @@ test {
 Intelli J에서 테스트 코드를 수행합니다. 
 
 ![webflux4-2](https://github.com/tries1/glenn-blog/blob/master/assets/spring/webflux4_2.webp?raw=true)
+
+다음 시간엔 thymeleaf 사용하여 화면을 구성하도록 하겠습니다.
