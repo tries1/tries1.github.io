@@ -409,4 +409,4 @@ test {
 
 Intelli J에서 테스트 코드를 수행합니다. 
 
-![webflux4-1](https://github.com/tries1/glenn-blog/blob/master/assets/spring/webflux4_1.webp?raw=true)
+![webflux4-2](https://github.com/tries1/glenn-blog/blob/master/assets/spring/webflux4_2.webp?raw=true)
