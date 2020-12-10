@@ -188,8 +188,8 @@ public class UserApiController {
 `UserRepository`, `UserService`에 대해서 기능이 정상적으로 동작하는지  
 테스트 코드를 작성해보겠습니다.
 
-test.com.example.webfluxboard.service
-test.com.example.webfluxboard.repository
+`test.com.example.webfluxboard.service`  
+`test.com.example.webfluxboard.repository`
 
 2개의 package를 추가합니다.
 
