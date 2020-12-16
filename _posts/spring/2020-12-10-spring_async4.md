@@ -279,6 +279,14 @@ class UserRepositoryTest {
 }
 ```
 
+- @SpringBootTest : 통합테스트를 쉽게 할수있도록 모든 의존성을 초기화합니다.
+- @BeforeEach : @Test 어노테이션이 붙은 메소드 실행전 수행
+- @AfterEach : @Test 어노테이션이 붙은 메소드 실행후 수행
+- @DisplayName : 테스트 결과에 보여질 테스트 이름을 지정
+- @Test : 테스트 수행할 메소드
+- StepVerifier : Mono, Flux같은 Publisher는 비동기로 동작하기때문에, StepVerifier를 사용하여 테스트하여야한다.  
+그렇지 않으면, 로직이 수행하기전에 테스트 메소드가 끝나 버린다.
+
 UserServiceTest.java
 ```java
 import com.example.webfluxboard.model.User;
