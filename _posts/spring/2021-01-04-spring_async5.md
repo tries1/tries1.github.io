@@ -115,6 +115,10 @@ resources 디렉토리 아래에 template 디렉토리를 만들고 index.html�
 
 [index.html Code](https://github.com/tries1/r2dbc-sample/blob/develop/src/main/resources/templates/index.html)  
 
+클래스패스내에 `spring-boot-starter-thymeleaf`가 존재하면  
+Springboot의 Auto Configuration으로 인하여 View Resolver설정을 따로 하지않아도  
+손쉽게 사용할수 있습니다.
+
 ## Profiles를 mysql로 변경후 실행
 
 http://localhost:8080으로 접속하여  
