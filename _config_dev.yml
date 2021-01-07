@@ -10,7 +10,7 @@ exclude:
 
 # Site settings
 title: (DEV profile) Java, Spring 프로그래밍 Note
-subtitle: "Java, Spring 프로그래밍을 하면서 필요했던 지식 및 Tip을 정리한 Note입니다."
+subtitle: "Java, Spring 프로그래밍을 하면서 필요했던 내용 및 Tip을 정리한 Note입니다."
 email: tries1@naver.com
 name: Glenn
 description: >
